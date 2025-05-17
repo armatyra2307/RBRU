@@ -1,0 +1,17 @@
+{
+  "name": "rocket-business-test",
+  "version": "1.0.0",
+  "description": "Test assignment for Rocket Business",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "inputmask": "^5.0.8"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.15.0",
+    "parcel": "^2.9.3",
+    "sass": "^1.69.5"
+  }
+}
