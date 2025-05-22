@@ -8,8 +8,10 @@
   },
   "dependencies": {
     "inputmask": "^5.0.8",
-    "parcel": "^2.8.3",
-    "@parcel/transformer-sass": "^2.8.3",
     "sass": "^1.69.5"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.3",
+    "@parcel/transformer-sass": "^2.8.3"
   }
 }
