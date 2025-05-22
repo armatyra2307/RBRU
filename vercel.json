@@ -1,4 +1,12 @@
 {
   "version": 2,
-  "outputDirectory": "dist"
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": "dist",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
 } 
