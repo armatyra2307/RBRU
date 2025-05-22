@@ -4,12 +4,12 @@
   "description": "Test assignment for Rocket Business",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --public-url ./"
   },
   "dependencies": {
     "inputmask": "^5.0.8",
-    "parcel": "^2.9.3",
-    "@parcel/transformer-sass": "^2.15.0",
+    "parcel": "^2.8.3",
+    "@parcel/transformer-sass": "^2.8.3",
     "sass": "^1.69.5"
   }
 }

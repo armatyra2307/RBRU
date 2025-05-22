@@ -1,12 +1,7 @@
 {
   "version": 2,
-  "framework": null,
-  "buildCommand": null,
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "installCommand": "npm install",
+  "framework": null
 } 
