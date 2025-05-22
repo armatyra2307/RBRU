@@ -5,7 +5,7 @@ const path = require('path');
 
 // Копируем статические файлы
 function copyStaticFiles() {
-  const staticDirs = ['i', 'styles'];
+  const staticDirs = ['i']; // копируем только папку с картинками и видео
   const distDir = 'dist';
 
   // Создаем dist директорию если её нет
@@ -52,7 +52,7 @@ async function build() {
 
     // Собираем проект
     await esbuild.build({
-      entryPoints: ['index.html'],
+      entryPoints: ['index.html', 'styles/main.scss'],
       bundle: true,
       outdir: 'dist',
       minify: true,
