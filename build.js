@@ -5,7 +5,7 @@ const path = require('path');
 
 // Копируем статические файлы
 function copyStaticFiles() {
-  const staticDirs = ['i']; // копируем только папку с картинками и видео
+  const staticDirs = ['i'];
   const distDir = 'dist';
 
   // Создаем dist директорию если её нет
@@ -45,34 +45,52 @@ function copyDir(src, dest) {
 }
 
 // Сборка проекта
-async function build() {
+async function build(serve = false) {
   try {
     // Копируем статические файлы
     copyStaticFiles();
 
-    // Собираем проект
-    await esbuild.build({
+    const buildOptions = {
       entryPoints: ['index.html', 'styles/main.scss'],
       bundle: true,
       outdir: 'dist',
-      minify: true,
-      plugins: [sassPlugin()],
+      minify: !serve,
+      plugins: [
+        sassPlugin({
+          type: 'style',
+          loadPaths: ['styles']
+        })
+      ],
       loader: {
         '.html': 'copy',
         '.png': 'copy',
         '.jpg': 'copy',
         '.jpeg': 'copy',
         '.gif': 'copy',
-        '.svg': 'copy',
-        '.css': 'copy'
+        '.svg': 'copy'
       }
-    });
+    };
 
-    console.log('Build completed successfully!');
+    if (serve) {
+      // Режим разработки
+      const ctx = await esbuild.context(buildOptions);
+      await ctx.watch();
+      const { host, port } = await ctx.serve({
+        servedir: 'dist',
+        port: 3001
+      });
+      console.log(`Server running at http://${host}:${port}`);
+    } else {
+      // Режим сборки
+      await esbuild.build(buildOptions);
+      console.log('Build completed successfully!');
+    }
   } catch (error) {
     console.error('Build failed:', error);
     process.exit(1);
   }
 }
 
-build(); 
+// Проверяем, запущен ли скрипт через npm start
+const isStart = process.env.npm_lifecycle_event === 'start';
+build(isStart); 

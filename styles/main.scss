@@ -660,10 +660,8 @@ body {
         // ЦЕНА И КНОПКА ВНИЗУ СПРАВА
         .product-card__info {
           position: absolute;
-          bottom: 15px; // На одном уровне с лейблами
           left: auto; 
           background: transparent; 
-          padding: 0 15; 
           z-index: 3; 
           display: flex; 
           align-items: center;
@@ -784,7 +782,7 @@ body {
       justify-content: center !important;
       display: flex;
       flex-direction: column;
-      bottom: 0;  
+      bottom: -15px;  
       left: 0;
     }
     .product-card.div3 .product-card__info h3,
@@ -1114,8 +1112,3 @@ body {
     display: none !important;
   }
 }
-
-
-
-
-

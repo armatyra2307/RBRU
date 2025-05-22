@@ -4,7 +4,8 @@
   "description": "Test assignment for Rocket Business",
   "scripts": {
     "start": "node build.js",
-    "build": "node build.js"
+    "build": "node build.js",
+    "dev": "node build.js"
   },
   "dependencies": {
     "inputmask": "^5.0.8",
