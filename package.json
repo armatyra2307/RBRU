@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Test assignment for Rocket Business",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --public-url ./"
+    "start": "node ./node_modules/parcel/lib/bin.js index.html",
+    "build": "node ./node_modules/parcel/lib/bin.js build index.html --public-url ./"
   },
   "dependencies": {
     "inputmask": "^5.0.8",
