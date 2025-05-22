@@ -57,8 +57,9 @@ async function build(serve = false) {
       minify: !serve,
       plugins: [
         sassPlugin({
-          type: 'style',
-          loadPaths: ['styles']
+          type: 'css',
+          loadPaths: ['styles'],
+          cssImports: true
         })
       ],
       loader: {
