@@ -870,8 +870,7 @@ body {
       position: relative;
       width: 100%;
       max-width:230px ;
-      overflow: hidden;
-      margin-bottom: 15px;
+      
       order: 4; /* Перемещаем слайдер вниз */
     }
     
@@ -888,8 +887,11 @@ body {
     .mobile-slider__slide {
       flex: 0 0 100%;
       width: 100%;
+      margin-right: 20px;
     }
-    
+    .mobile-slider__slide.active{
+      opacity: 50%;
+    }
     .mobile-slider__dots {
       display: flex;
       justify-content: center;

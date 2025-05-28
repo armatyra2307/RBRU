@@ -8,7 +8,7 @@
 </head>
 <body>
     <header class="hero">
-        <video class="hero__video" id="heroVideo" poster="i/poster.png">
+        <video class="hero__video" id="heroVideo" poster="i/poster-video.jpg">
             <source src="i/SampleVideo_360x240_1mb.mp4" type="video/mp4">
             Ваш браузер не поддерживает видео.
         </video>
@@ -86,7 +86,7 @@
                     <div class="product-card__label">
                         <span class="hit">Хит</span>
                     </div>
-                    <img src="i/morkov_f.jpg" alt="...">
+                    <img src="i/morkov.jpg" alt="...">
                     <div class="product-card__bottom-row">
                         <div class="product-card__info">
                             <div class="product-card__price"><span>140 ₽</span></div>
@@ -147,7 +147,7 @@
                         <!-- Малина -->
                         <div class="product-card div5">
                             <div class="product-card__image">
-                                <img src="i/a_2708_95.jpg" alt="...">
+                                <img src="i/malina.jpg" alt="...">
                                 <div class="product-card__label">
                                     <span class="hit">Хит</span>
                                 </div>
@@ -213,7 +213,7 @@
             <!-- малин -->
             <div class="desktop-only product-card div5">
                 <div class="product-card__image">
-                    <img src="i/a_2708_95.jpg" alt="...">
+                    <img src="i/malina.jpg" alt="...">
                     <div class="product-card__label">
                         <span class="hit">Хит</span>
                     </div>
@@ -461,10 +461,15 @@
 
                 function updateSlider() {
                     container.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    slides.forEach((slide, index) => {
+                        slide.classList.toggle('active', index === currentSlide);
+                    });
                     dots.forEach((dot, index) => {
                         dot.classList.toggle('active', index === currentSlide);
                     });
                 }
+
+                updateSlider();
 
                 function nextSlide() {
                     currentSlide = (currentSlide + 1) % slides.length;

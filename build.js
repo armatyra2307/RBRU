@@ -55,11 +55,13 @@ async function build(serve = false) {
       bundle: true,
       outdir: 'dist',
       minify: !serve,
+      sourcemap: serve, // Добавляем sourcemap для разработки
       plugins: [
         sassPlugin({
           type: 'css',
           loadPaths: ['styles'],
-          cssImports: true
+          cssImports: true,
+          watch: serve // Включаем отслеживание изменений для SCSS
         })
       ],
       loader: {
@@ -75,12 +77,21 @@ async function build(serve = false) {
     if (serve) {
       // Режим разработки
       const ctx = await esbuild.context(buildOptions);
+      
+      // Включаем режим наблюдения за файлами
       await ctx.watch();
+      
+      // Запускаем сервер разработки
       const { host, port } = await ctx.serve({
         servedir: 'dist',
-        port: 3001
+        port: 3001,
+        onRequest: (args) => {
+          console.log(`${args.method}: ${args.path}`);
+        }
       });
+      
       console.log(`Server running at http://${host}:${port}`);
+      console.log('Watching for changes...');
     } else {
       // Режим сборки
       await esbuild.build(buildOptions);
